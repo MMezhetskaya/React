@@ -1,0 +1,95 @@
+<body>
+<script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/prop-types@15.6.0/prop-types.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<div id="root"></div>
+<style>
+    .button{
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 60px;
+        cursor: pointer;
+        padding: 0 20px;
+    }
+    .button--large {
+      width: 240px;
+    }
+    .button--medium {
+      width: 180px;
+    }
+    .button--small {
+      width: 100px;
+    }
+    .theme-orange {
+        display: inline-block;
+        margin-top: 18px;
+        box-shadow: 0 0 3px #d9d9d9, inset 0 1px 0 hsla(0,0%,100%,.21);
+        background-color: #44dacc;
+        background-image: linear-gradient(20deg,#ff4800 0,#ffa54d 100%);
+    }
+    .theme-orange:hover{
+        background-image: linear-gradient(20deg, #d321c3 0, #ff1015 100%);
+    }
+    .theme-blue {
+        display: inline-block;
+        color: #fff;
+        background: #5791ef linear-gradient(to top,rgba(75,133,238,.67) 0,rgba(116,176,248,.67) 99%,rgba(116,176,248,.67) 100%);
+    }
+    .theme-blue:hover{
+        background-color: #74b0f8;
+        cursor: pointer;
+    }
+    .theme-green {
+        display: inline-block;
+        margin-top: 18px;
+        box-shadow: 0 0 3px #d9d9d9, inset 0 1px 0 hsla(0,0%,100%,.21);
+        background-color: #44dacc;
+        background-image: linear-gradient(20deg, #2aff82 0, #beff1c 100%);
+    }
+    .theme-green:hover{
+        background-image: linear-gradient(20deg, #cfd319 0, #5eff40 100%);
+    }
+</style>
+<script type="text/babel">
+    const Button = ({
+      style,
+      theme = 'orange',
+      size,
+      className = '',
+      ...rest
+    }) => {
+      const sizeClassName = size ? `button--${size}` : '';
+      return (
+        <button
+          className={`button ${className} ${sizeClassName} theme-${theme}`}
+          style={{ paddingLeft: 20, ...style}}
+          {...rest}
+        />
+      )
+    };
+    const element = (
+      <div>
+        <Button size="small" theme='orange'>
+            small
+        </Button>
+          <p></p>
+        <Button size="medium" theme='blue'>
+          medium
+        </Button>
+          <p></p>
+        <Button size="large" theme='green'>
+          large
+        </Button>
+      </div>
+    );
+
+    ReactDOM.render(
+      element,
+      document.getElementById('root')
+    );
+</script>
+</body>
