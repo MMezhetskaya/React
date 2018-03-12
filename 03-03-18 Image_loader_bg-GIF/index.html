@@ -1,0 +1,39 @@
+<body>
+<script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<div id="root"></div>
+<script type="text/babel">
+    class LoadingDot extends React.Component {
+        state = {
+        dots: ""
+     };
+    componentDidMount() {
+      this.interval = setInterval(() => {
+        const { dots } = this.state;
+          this.setState({
+          dots: dots.length >= 3 ? "" : `${dots}.`
+        });
+      }, 100);
+    }
+    componentWillUnmount() {
+      clearInterval(this.interval);
+    }
+    render() {
+        //for background url use www.base64-image.de
+        const sectionStyle={
+            width: "200px",
+            height: "200px",
+            backgroundImage: "url('data:image/gif;base64,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')"
+        };
+      return (
+         <section style={ sectionStyle }> </section>
+      );
+    }
+  }
+  ReactDOM.render(
+      <LoadingDot />,
+      document.getElementById('root'),
+  )
+</script>
+</body>

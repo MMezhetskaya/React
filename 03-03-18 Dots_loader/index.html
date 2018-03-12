@@ -1,0 +1,36 @@
+<body>
+<script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+   class LoadingDot extends React.Component {
+     state = {
+        dots: ""
+     };
+     componentDidMount() {
+      this.interval = setInterval(() => {
+        const { dots } = this.state;
+        this.setState({
+          dots: dots.length >= 3 ? "" : `${dots}.`
+        });
+      }, 500);
+    }
+    componentWillUnmount() {
+      clearInterval(this.interval);
+    }
+    render() {
+      return (
+          <span style={{ textAlign: this.props.align }}>
+              {this.state.dots}
+          </span>
+      );
+    }
+  }
+   ReactDOM.render(
+       <LoadingDot />,
+       document.getElementById('root'),
+   )
+</script>
+</body>

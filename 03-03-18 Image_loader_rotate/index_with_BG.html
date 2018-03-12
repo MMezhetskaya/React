@@ -1,0 +1,50 @@
+<body>
+<script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<div id="root"></div>
+<script type="text/babel">
+
+   class LoadingDot extends React.Component {
+     state = {
+         dots: ""
+     };
+     componentDidMount() {
+         this.interval = setInterval(() => {
+             const { dots } = this.state;
+             this.setState({
+                 dots: dots.length >= 3 ? "" : `${dots}.`
+             });
+             }, 100);
+     }
+     componentWillUnmount() {
+      clearInterval(this.interval);
+    }
+    render() {
+         const sectionStyle={
+             width: "150px",
+             height: "150px",
+             backgroundImage: "url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD//gA7Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2ODApLCBxdWFsaXR5ID0gODAK/9sAQwAGBAUGBQQGBgUGBwcGCAoQCgoJCQoUDg8MEBcUGBgXFBYWGh0lHxobIxwWFiAsICMmJykqKRkfLTAtKDAlKCko/9sAQwEHBwcKCAoTCgoTKBoWGigoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgo/8AAEQgAgACAAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A+qaKKKACiiuU8QeLobSV7TTAtzdKcM+fkjPp7n2H59qAOmubiG1iMlzKkUY/idsCsV/FNmX2wRzzD+8F2g/nz+lcaPtN/OJr6Z55OxboPoOg/Cta1tgAOKAOqs9Xt7khSHiY/wB8cfnXPePfiR4e8FJs1W633pXctrD80mPU9lH1/DNWoIQMcV87ftWfD+UWkXivSFfZvEV/BGOCT92Xj3wp+qn1oA09Y/aXWSV1sWtLSLsPKeZx/wACxg/lVXSP2jL2S5ES3EF2zHhZoBGD7DBWvlgxSL1Rh9RUtjZXWoXcdpYW011dSnbHDDGXdz6BRyaAP0H8CfE+x8Tv9mmt2tb4Lny924OO5X6enX6138E8U65icN6juPwr4s8IaF428HadZav4g0m5sIop0+yzTsodjgnYyZ3DhT1A44r67gRbm2guoNyiRFkQ9CARmgDcorNgvmjbZd9O0gH860gQRkHINABRRRQAUUVwHx28VyeD/hpql/aSiK/mAtLVs4Ikfgke6rvYf7tAHk/7QPx5k0e8uPDng8xvPGTHd3rchWHBjQe3Qn14rxDwn8QPiHrHiCz03QrsXl9cvthtfs8IDnGcZIGBgE5yOledXUhmnJHPYV2Hwp8Rr4G8XW/iKWy+1z2sMotoi+xRI6FAzH+6Ax4obsJu2rPoDwx8UbvStZh0L4naLL4d1KTiO6dStvLzjOTnA/2gSvuK9utgrKrKQVIyCOQRXwf4w8S6r411eXU/EN415cPwozhIl7Ii9FUe31OSSa9e/Z1+J0unXtt4R8R3G+ylITTrqQ8xt2hY+h/h9Dx0IxnGopOxnGrGTsfUUK9KZrWmRaxol9p0wHl3MLREkdMjAP4HmpoqtR1oanwtquk2c0ssF3bBZkYozIdrKQcHkVylvc6p4S8QCXRtSu7WbZmO4gkMb7SeVJHUccjocV6T8SrRNO+IfiGGMEKbyRwPTcd3/s1ecaw4uL6c9o1CA+/U/wA64otptHnxlJNps9MsPi94l8T6FceHPEZh1EOyyxXhjEcsZUjghQAw7dAeepr7F0i0Npo9jbP96GBIz9QoFfF37O3ht/EHj203Jm3t2E0xPTYhDEH6nav/AAKvuE11U23G7Oyk243ZRuIQwPFGms0bNA3Kjlfb2qzIM1WWSKG5TzZEjLnau5gNx9B61ZoX6KKKACvn/wDbQeQfDjSFTOG1Vc/XyZcf1r23xFrlj4f0x77UpNkQO1VHLSMeiqO5/wD114v481e3+IdhFp2rafGNOiuFuI4w7B94DKCWBHZjx70AfIWn6fsjMsi5PYep7CuisPDSzKs+qMSp5WFDgfia9/tvh/4ZkVcadsI6FZn44xnk4pmp/C+3uULaZfyQv2SdQy/mMEfrWVVSa90xrKbXungl/okEQMmnxqjDrGTw3/16xpYVlQmPcpB5U8FSP5GvUfEvgzXdC3SXlm0lsvP2iD50x6nuPxArhdStdzGeAfP/ABqP4h/jXNd3tLc5LyvaW59X/ALx43jPwkItQkzrWm7YLrPWUY+SX/gQBz/tA+1erw5YgCvhT4VeLG8HeNrHVfMIsZD9nvVHRoWIyceqnDfhjvX3bprLKodCGUjIIOQRxzXXCXMjtpz5kfIfx8xa/FLXy2Ao8lz/AN+ENePZZo2JGZJDkj3Jr1n9pJnl+KuuQxKxLGAEAdhBGT/T86f+z38O38YeKRf6lATommOHl3DiaTqsfv6n2+orn5byaOblvJpdWe6fs4eCP+EW8Ex315Ht1HUlErZHKR9VH453fiPSvWSafjAwOlUNSvrbTrSa6vp47e2iG55JGCqo9zXVsjsSSRPNIscbPIyqiglmY4AHqa+Lfjl8Y9Uv/iCY/Dd00GlaXmGMdVuWJG6QjuDgBfYZ4ya774pfFeTxC0ulaCzw6RnbJMeHuP8ABPbqe/pXzb43tli1VmQcMqt+HTH4Y/WoVVOVkZRrRlLlR9ZfAX4wjxVaPY6gNl/bAF4S2dydN6E84B4I7cete9RussavGQyMMgjvX5h+GtbvfDuuWmq6bKY7m3fcPRh3U+oIyDX6LeAtU/tDS484G9FlVc9j1/Dp+daGx5J8bNae+8eJpiyHyNOhUFOwkcbyf++Sn5VmaW2AtZHxCuPO+KXiFjni4VOf9mNV/pV7S5OBQB19k/ArZtX6VxFx4l0fScDUtUs7Vv7ssyhvyzmqo+LHg2BtrayHI/5528rj8wpFAHqcDAjBrjvFvwv0TxAjzWajTb88+ZCvyMf9pOn4jB+tYsPxl8GjGdQuf/AOb/4mtW0+LvguXAGslT/t2k6/zSpfLLRkS5JaM8A8eeA9Z8JXDSX1qTas3FxF80TH1B7H2OD3r6U/Zm8XDXPBCafcybr3SiLZsnkxf8s2/IFf+AU+Px74M1O3eCbXNKkglG1o7mQIrD0IfFZfgrwtomieM/7Y8EataNZ3EbR3dglwJV2nkNGQSRhgOD2JwR0qIx5XdERhyyvF6EegX2mXfx48Z2s+npfao+2O0Eke9F2ooYsedq9Mn2wOSBXtPh3RrXQdLjsrKNEQM0jlUC75GOWbA6ZPbsMAcCvNVuNP+Hl1rmtDS9T1jWdYuXnc2Vm8hCbjsj3AbVUDGcnJPODgAeNfET4seNtfEtuLC+0bTm48iGJ0Zh6PIRk/QYHtRzKAcyp77nvnxA+Lfh7wksttHKNS1VePstuwwh/236L9OT7V80eNvHmt+M7vfqtwFtlbMVpF8sSe+O59zk1wjS3gPFq6n/aQmmBtQkOEinJ9I4if6VhOcpnNUnKenQ3oWxyTxXKeJJ4L2/UeZ+7HDug3YHHQZGTx0zWpF4e8R6n8kOlak6Hu8TKPzOBXWeHfgv4g1Nl+3eVYQH72P3r/AJLx+ZpQg07oVOEk7pHPeJvg74m8P+ObLw9cwefFfPm1v4gTDLEPvPn+EqDyp5HuCCfsLwYRYarY20WRFsMPJ7BeP5ClunvbyOFb6QLHEoVUX2GM1Ws5PK1zTtnH+kIv4FgK7T0Dwn4s3sWi/EvxRJdvhEuBJx1O5FYAe/IrP+GfhnxP8YLu7MOpjQvDtoQsxiO6aQnPygAgnOOScKPQkEVa/aw0lrb4mmZVbytQtIrlj2LqDFj8BGv51L8L9SudAe1n0mUwvGu3A6OvcMO4P/1+tAHhxtYLZ33AHB5Z+TVq3CyjMccso9EXj863vFejqfiDLBLCiW7yvOsSDCgH5gB7AEVpyRhF2ooVR0AGAK4qmj11PPqWT97VnNLbXJ+7bBB/tuB/LNWbPSb28uEgt082dzhY4kLsfpXfeFfBV5rhWe4Y2lif+WjD5n/3R/Xp9a9l8NaLpmgW/labbqjEYeVuZH+rf06VUKblrsVTpOetrI8y8H/BSe5Mdx4lu2tojz9mgKmQ/VuQv4Z/Cu51LVdF8CX+i+GvC1lBBf6jdQRzOo3MkTOAWdjyWIyBk8cn0z0Gv65/ZOnmSJPPvJDst4c/6x8Z59gAST6CvC9BFxd/FPSZb+UzXb3Ymldu5HT6DjgdsU5VYU5qkvif5DnWp0qiox+J/l3PYfiD411PwLr9neyxG98PXw8t4+jwSr1Kt6EYOD3B6V2nhfxZpXiay+0aTdrKABviPEkfsy9vr09KwvHmhx+KPCl7pj481l3wsf4ZF5U/0+hNfKulX9/oWqYhmms7yBygdGKsjA4KmtJzcH5G05unLyPt1o4H+/DE31UGkMFr/wA+8P8A3wK8Q8H/ABlYLHbeKICT0+1wL+rJ/Vfyr1nTNZstVtRcabdxXMJ/ijbOPY+h9jWkZqWxpCpGexq7YUOUijU+ygUyWb3qq8/vVaafrzVFj7qbg81n6UftHibTYxz+/Df98/N/Soru44PNX/h9YyXmvNfsp8i1UgN6uwxj34J/MUAYX7UXhKbW/CVrrNlG0lxo7s0iKMkwPjecd9pVT7Dca8H8EXP7tUJ5XivuB1V0ZXUMrDBBGQRXzz8QPg1d6Tqkms+CIvPtHJabTQcNH3zH/eX/AGeo7ZzgAHm/j7Sd8thrkCkmFvKmA/unIB/X+VXPDXh+FpEu9QUOPvRwnp9W/wAKuSauEs5LOeCSK5DbJYZ0IKEeoPepbS7zjmodNN3Zm6UXLmZ2FvccDnFXlu1jjZ5HCooySTgADvXMW9z05rmPih4gaz0P7DA+JboYYg9E9Px/kDVN2V2W2oq7MXW/G8+peJJ762kZbaIGC2HondvqxAP0AHaqvw9uWvfiBp13Ic75zt+gU4/XJ/GuF3MtuqofnfCr9TXaeAwLXxTpOOFWUKPyxXmwpp1XWe7PIp0ouu67XvPT5H0uk/vXg3x08Liz1Ma7aJ/o10dtwAOEk7H8f5/WvYkufeoNVt7bVdOnsr1BJBMpVlNejOPMrHq1Ic8bHy/YT7iIpD838J9a3NLvLvT7lZ7C4lt5R/HGxU/p2rL8XaBdeFtXe0uAz27fNbzDjev+I7j/AOtUdjrFuBtun2OOjEcNXC00zzmmn5nrOjfEzWYE236QXiAcuw2N+Y4/Srd58ZtMtkH2nT7vftyyxOrbT6ZJHPT868cuNYe9c2mmLheskx7D2rntekEaiGMlj09STXVR5mtTsoc7V5M+6/C3h6DXtLtNTlun+zXMaTJGgwSrKGGT9DXe2VpBY2yW9pEsUKdFFYHw3spNO8G6TZzgiW3tIYXB6hljUGumrY6AooooA+Yf2kb5ofiPaxPgKNPjK+43yf1zXD2N8CBzXtX7THw/vvEmj2uv+H4GuNV0xWWW3jGXngPJC+rKckL3DNjJwD8vaTrCuB83PpQB6na3nTmvNvH9411quSSR2+g4H9fzrestRDAAHrXb6T8HW8d+GW1PS9RS31OGdoHhuAfLdQFYEEAkH5j2Ofas6sXKNkZVouUGkeI6YBPeW6f88wWI/lXVaU/2XVLS47RTI5/Aio/Enw68U+ENXV5rEStHkHyXEiOvvtyR+ODSQXIfC3NrcW0ndXXj865XCSscbpyVtD3BLv3qQXfv+tchpep+dYwuSd20Bs9cirv23/aruWp6Cd9TS1/TdP8AEemvYaovyNykq/eibswry60+CvifUvFMek2iwPZSfP8A2gzARrH6kdd3P3R/LJrvWvv9qreneK59MYbSJIgc7GP8j2qJU4yd2RKlGTuzzr4qeHdI8A60+haRJLK1vBH9pnl+9JKy7icdAMMuB29zk074FfDm/wDEviyz8QavaPFodm/nReauPtMg+6FHdQcEnocY9ceoyeNPDNzei4vfD4utTkIAcW8csjt0ADH5iegr2fwfa389tHf6taixZhmKz3bnjHq56bv9kdO5J6XsaJWOgsYTBbKrfePLfWp6KKACiiigArxr4t/ArSfGMs2q6DJHo3iBiXeRV/cXLf8ATRR0Yn+NeeTkNxXstFAH5+eKNA8S+BL/AOy+J9NntV3bY7kDdBN/uSDg8DOOo7gV6f4P1+7l0QTaVeTLDMMyxRyFQXHBBAOM19XXtpbX9pLa31vDc2sq7ZIZkDo49Cp4Irzuf4M+F4r+S80JLjRZZDmWK0fMEh7ZjYELj/Y20AeQx+IwrFHba44KtwRUsniCKRdrMrD0PNemXvwnedVD3lndbennW+MfTk1c0n4V2trLHJNNbxlTn/RrdVb8GPT8qAPLG0HVdagEun2Teao+SPG1pB6AfrmuKuNQe3mkhnVopY2KujjaykcEEHoa+xtL0u00yLZaRYJ+87HLN9TWR4o8D+G/FDB9b0qC4mAA85S0cmB0G9SCR7E4oA+RZtZVQcsK1vCfhvxH41mA0KxY2ucNez5jgX/gWPmPsoJ9q+i9N+EPgXT7oXEWgQzSDoLmWSdf++HYr+ld5GixoqRqFRRgKowAPQUAcD8OvhhpXhDZeSsdQ1nBzdyrgR56iNf4fryeTzg4rv6KKACiiigD/9k=')",
+             backgroundRepeat  : 'no-repeat',
+             margin:"10%"
+         };
+         return (
+             /* <section style={ sectionStyle }> {this.state.dots}</section>*/
+             <svg  style={sectionStyle}>
+                 <animateTransform attributeType="xml"
+                                   attributeName="transform"
+                                   type="rotate"
+                                   from="0 60 70"
+                                   to="360 60 70"
+                                   dur="5s"
+                                   repeatCount="indefinite"/>
+             </svg>
+         );
+     }
+   }
+   ReactDOM.render(
+       <LoadingDot />,
+       document.getElementById('root'),
+   )
+</script>
+</body>
