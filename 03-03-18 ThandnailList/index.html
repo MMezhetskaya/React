@@ -1,0 +1,107 @@
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<style>
+    .button{
+        text-decoration: none;
+        background-color: #347AB7;
+        color: #FFFFFF;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 30px;
+        cursor: pointer;
+        margin: 10px 5px 40px 5px;
+        width: 160px;
+        border:none;
+        border-radius: 4px;
+    }
+    .div{
+        border: 1px solid #DDDDDD;
+        border-radius: 4px;
+        width: 31%;
+        display: inline-block;
+        margin: 5px;
+        padding: 5px;
+    }
+    .divBtn{
+        color: #347AB7;
+        background-color:#FFFFFF;
+        width: 20px;
+        border-radius: 6px;
+        display: inline-block;
+        margin: 8px;
+        padding-left: 5px;
+        padding-right: 5px;
+        line-height: 20px;
+    }
+    .center-pic{
+        display:block;
+        margin:auto;
+        width: 90%;
+    }
+</style>
+
+<script type="text/babel">
+
+    function Thandnail(props) {
+        return (<div className = {'div'}>
+                    <img className = {'center-pic'} src={props.value.imageUrl}/>
+                    <h3>{props.value.header}</h3>
+                    <section>{props.value.description}</section>
+                    <button className = {'button'}> {props.value.title}
+                        <div className = {'divBtn'}>{props.value.num}</div>
+                    </button>
+                </div>
+        );
+    }
+
+    function ThandnailList(props) {
+        const options = props.options;
+        return (
+                <ul>
+                    {options.map((option,index) =>
+                            <Thandnail key={index}
+                                      value={option} />
+                    )}
+                </ul>
+        );
+    }
+  const options = [{
+       title: 'Show Courses',
+       num: 12,
+       header: 'Learn React',
+       description: 'React is a fantastic new front end library for rendering web pages. React is a fantastic new front end library for rendering web pages.',
+       imageUrl: 'https://raw.githubusercontent.com/wiki/facebook/react/react-logo-1000-transparent.png'
+   },{
+       title: 'Show Courses',
+       num: 25,
+       header: 'Learn Gulp',
+       description: 'Gulp will speed up your development workflow.  Gulp will speed up your development workflow.  Gulp will speed up your development workflow.',
+       imageUrl: 'http://brunch.io/images/others/gulp.png'
+   },{
+       title: 'Show Courses',
+       num: 12,
+       header: 'Learn React',
+       description: 'React is a fantastic new front end library for rendering web pages. React is a fantastic new front end library for rendering web pages.',
+       imageUrl: 'https://raw.githubusercontent.com/wiki/facebook/react/react-logo-1000-transparent.png'
+   },{
+       title: 'Show Courses',
+       num: 12,
+       header: 'Learn React',
+       description: 'React is a fantastic new front end library for rendering web pages. React is a fantastic new front end library for rendering web pages.',
+       imageUrl: 'https://raw.githubusercontent.com/wiki/facebook/react/react-logo-1000-transparent.png'
+   },{
+       title: 'Show Courses',
+       num: 12,
+       header: 'Learn React',
+       description: 'React is a fantastic new front end library for rendering web pages. React is a fantastic new front end library for rendering web pages.',
+       imageUrl: 'https://raw.githubusercontent.com/wiki/facebook/react/react-logo-1000-transparent.png'
+   }];
+   ReactDOM.render(
+            <ThandnailList options={options} />,
+        document.getElementById('root')
+    );
+</script>
+</body>
