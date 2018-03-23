@@ -1,0 +1,141 @@
+<meta charset="utf-8" />
+<body>
+<div id="app"></div>
+<script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,900)
+    *{
+        font-family: 'Roboto';
+        box-sizing: border-box;
+    }
+    html{
+        border: 15px solid #98BCD6;
+    }
+
+    html, body{
+        margin: 0;
+        padding: 0;
+        border: 0;
+        vertical-align: baseline;
+        box-sizing: border-box;
+    }
+
+    .accor{
+        margin: 20px;
+    }
+    .head{
+        cursor: pointer;
+        display: inline-block;
+        clear: left;
+        border-bottom: 1px dotted #333;
+    }
+
+    .head:hover{
+        border-bottom: 1px solid #333;
+    }
+    .body{
+        background: #fafafa;
+        max-height: 0;
+        display:none;
+        font-size: 13px;
+
+    }
+    .active > .body{
+        padding: 10px 0px;
+        max-height: 600px;
+        color: #1f669b;
+        display: block;
+        transition: max-height 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .active > .head{
+        color: #1f669b;
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+</style>
+
+<script type="text/babel">
+
+    class Accordion extends React.Component {
+        constructor() {
+            super();
+            this._handleClick = this._handleClick.bind(this);
+
+        }
+
+        componentDidMount() {
+            this._handleClick();
+        }
+
+        _handleClick() {
+            const acc = this._acc.children;
+            for (let i = 0; i < acc.length; i++) {
+                console.log(acc[i]);
+                acc[i].onclick = () => {
+                    for (let j = 0; j  < acc.length; j++){
+                         (j!=i)? acc[j].classList.remove("active"):acc[i].classList.toggle("active");
+                    }
+                }
+            }
+        }
+
+        render() {
+            return (
+                    <div
+                            ref={a => this._acc = a}
+                            onClick={this._handleClick}>
+                        {this.props.children}
+                    </div>
+            )
+        }
+    }
+
+    class App extends React.Component {
+        render() {
+            return (
+                    <div>
+                        <Accordion>
+                            <div className="accor">
+                                <div className="head">Что такое PAY2YOU?</div>
+
+                                <div className="body">
+                                    Это сервис переводов с карты на карту, позволяющий отправлять деньги по номеру карты, номеру мобильного телефона, а также через приложение в Facebook. Сервис работает на основе технологий Visa Money Transfer и MasterCard Money Send.
+                                </div>
+                            </div>
+                            <div className="accor">
+                                <div className="head">Какие карты можно использовать для перевода и получения денег через PAY2YOU?</div>
+                                <div className="body">
+                                    Использовать можно карты Visa и MasterCard, выпущенные любым банком Украины. Ваша карта должна быть открыта для расчётов онлайн. Этот вопрос вы можете уточнить в службе поддержки банка, который выпустил вашу карту. Номер контакт-центра банка указан на обратной стороне карты.
+                                </div>
+                            </div>
+                            <div className="accor">
+                                <div className="head">В какой валюте можно переводить деньги?</div>
+                                <div className="body">
+                                    Согласно с законодательством Украины, вы можете переводить только гривну.
+                                </div>
+                            </div>
+                            <div className="accor">
+                                <div className="head">На каких устройствах можно сделать перевод?</div>
+                                <div className="body">
+                                    <li>На персональном компьютере, ноутбуке — используйте любые интернет-браузеры. Например, Google Chrome, Mozilla Firefox, Opera (все используемые версии), Internet Explorer (не ниже 8 версии)</li>.
+                                    <li> На мобильном телефоне — достаточно скачать бесплатное мобильное приложение. Для телефонов на базе Android — сервис поддерживается, начиная с версии 4.1.2, для IOS – начиная с версии 7.1.</li>
+                                </div>
+                            </div>
+                            <div className="accor">
+                                <div className="head">Какие данные мне нужно знать, чтобы отправить деньги?</div>
+                                <div className="body">
+                                    Для успешного перевода вам нужно знать либо номер карты, либо номер мобильного телефона получателя. Также вам необходимо указать номер своей карты, срок её действия, CVV2 / CVC2 код.
+                                </div>
+                            </div>
+                        </Accordion>
+                    </div>
+            );
+        }
+    }
+
+    ReactDOM.render(<App />, document.getElementById('app'));
+</script>
+</body>
