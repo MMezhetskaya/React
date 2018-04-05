@@ -1,0 +1,96 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color:#DB4C3F;
+  height: 50px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.wrapper{
+  padding-left:40%;
+}
+
+.Header{
+  background-color:#DB4C3F;
+  height: 40px;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  font-size: 1.7em;
+}
+.list{
+  display: table-row;
+}
+/*li{
+  padding-right:25px;
+}*/
+.deleteBtn{
+  font-size: 0.7em;
+  left: -10px;
+  background: red;
+  color:white;
+  border-radius: 4px;
+  display: inline;
+}
+.editBtn{
+  font-size: 0.7em;
+  left: -10px;
+  background:#0089ff;
+  color:white;
+  border-radius: 4px;
+  display: inline;
+
+}
+
+.saveBtn{
+  font-size: 0.7em;
+  left: -10px;
+  background: #46ff34;
+  color:white;
+  border-radius: 4px;
+}
+
+.cancelBtn{
+  font-size: 0.7em;
+  left: -10px;
+  background: #ff6227;
+  color:white;
+  border-radius: 4px;
+}
+
+.addTask{
+  font-size: 1.0em;
+  left: -10px;
+  background-color:#DB4C3F;
+  color:white;
+  border-radius: 4px;
+  display: inline;
+}
+
+.editInput{
+  border:none;
+}
+
+.editInputShow{
+  border-color: red;
+  focus: active;
+}
+
+
+
