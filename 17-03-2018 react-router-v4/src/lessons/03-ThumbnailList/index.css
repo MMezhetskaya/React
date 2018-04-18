@@ -1,0 +1,37 @@
+ .buttonThumbnail{
+        text-decoration: none;
+        background-color: #347AB7;
+        color: #FFFFFF;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 30px;
+        cursor: pointer;
+        margin: 10px 5px 40px 5px;
+        width: 160px;
+        border:none;
+        border-radius: 4px;
+    }
+    .div{
+        border: 1px solid #DDDDDD;
+        border-radius: 4px;
+        width: 31%;
+        display: inline-block;
+        margin: 5px;
+        padding: 5px;
+    }
+    .divBtnThumbnail{
+        color: #347AB7;
+        background-color:#FFFFFF;
+        width: 20px;
+        border-radius: 6px;
+        display: inline-block;
+        margin: 8px;
+        padding-left: 5px;
+        padding-right: 5px;
+        line-height: 20px;
+    }
+    .center-pic{
+        display:block;
+        margin:auto;
+        width: 90%;
+    }
